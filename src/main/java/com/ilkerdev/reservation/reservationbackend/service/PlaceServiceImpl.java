@@ -11,6 +11,7 @@ import java.util.List;
 public class PlaceServiceImpl implements PlaceService {
 
     private PlaceDao placeDao;
+    int x;
 
     public PlaceServiceImpl(PlaceDao placeDao){
         this.placeDao = placeDao;
