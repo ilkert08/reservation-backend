@@ -2,6 +2,7 @@ package com.ilkerdev.reservation.reservationbackend.entity;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "users")
 public class User {
