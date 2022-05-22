@@ -1,6 +1,8 @@
 package com.ilkerdev.reservation.reservationbackend.rest;
 
 import com.ilkerdev.reservation.reservationbackend.entity.Reservation;
+import com.ilkerdev.reservation.reservationbackend.requests.ReservateRequest;
+import com.ilkerdev.reservation.reservationbackend.responses.ReservateResponse;
 import com.ilkerdev.reservation.reservationbackend.service.ReservationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +54,15 @@ public class ReservationRestController {
             throw new RuntimeException("User not found");
         }
         return  reservation;
-
     }
+
+
+    @PostMapping("/reservate")
+    public ReservateResponse Reservate(@RequestBody ReservateRequest reservateRequest){
+        ReservateResponse response = reservationService.reservate(reservateRequest);
+        return response;
+    }
+
+
+
 }

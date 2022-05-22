@@ -1,8 +1,17 @@
 package com.ilkerdev.reservation.reservationbackend.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
 
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "rezdates")
 public class ReservationDate {
@@ -17,42 +26,4 @@ public class ReservationDate {
     @Column(name = "interval")
     private int interval;
 
-    public ReservationDate(){
-
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getResDate() {
-        return resDate;
-    }
-
-
-
-    public void setResDate(Date resDate) {
-        this.resDate = resDate;
-    }
-
-    public int getInterval() {
-        return interval;
-    }
-
-    public void setInterval(int interval) {
-        this.interval = interval;
-    }
-
-    @Override
-    public String toString() {
-        return "ReservationDate{" +
-                "id='" + id + '\'' +
-                ", resDate=" + resDate +
-                ", interval=" + interval +
-                '}';
-    }
 }

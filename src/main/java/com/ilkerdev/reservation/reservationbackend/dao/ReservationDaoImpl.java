@@ -1,6 +1,8 @@
 package com.ilkerdev.reservation.reservationbackend.dao;
 
 import com.ilkerdev.reservation.reservationbackend.entity.Reservation;
+import com.ilkerdev.reservation.reservationbackend.entity.Tables;
+import com.ilkerdev.reservation.reservationbackend.requests.ReservateRequest;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,5 +62,16 @@ public class ReservationDaoImpl implements ReservationDao{
             System.out.println("Updated!");
 
         }
+    }
+
+    @Transactional
+    @Override
+    public int reservate(ReservateRequest reservateRequest) { // 0 = add , else = update
+        Session currentSession = entityManager.unwrap(Session.class);
+        String customQuery = "update reservations set reserved = " + reservateRequest.getStatus()
+                + " where id = " + reservateRequest.getReservationId();
+        Query query = currentSession.createNativeQuery(customQuery);
+        int count = query.executeUpdate();
+        return count;
     }
 }
